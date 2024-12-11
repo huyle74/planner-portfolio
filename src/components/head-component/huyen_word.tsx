@@ -1,8 +1,12 @@
 import { ForwardedRef, forwardRef } from "react";
 import { Box } from "@mui/material";
 
-const Huyen_word = forwardRef(function Huyen(
-  props: object,
+interface Mobile {
+  mobile: boolean;
+}
+
+const Huyen_word = forwardRef<HTMLDivElement, Mobile>(function Huyen(
+  { mobile }: Mobile,
   ref: ForwardedRef<HTMLDivElement>
 ) {
   return (
@@ -10,7 +14,6 @@ const Huyen_word = forwardRef(function Huyen(
       sx={{
         margin: "auto",
         overflow: "hidden",
-        // border: "1px blue solid",
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
@@ -20,7 +23,7 @@ const Huyen_word = forwardRef(function Huyen(
       <p
         style={{
           textAlign: "center",
-          fontSize: "180px",
+          fontSize: mobile ? "5rem" : "10.5rem",
           fontWeight: 900,
           transform: "translateY(50%)",
         }}

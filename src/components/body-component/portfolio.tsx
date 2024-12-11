@@ -6,7 +6,11 @@ import gsap from "gsap";
 import PortGallery from "./portfolio-gallery";
 import { flexBox_Config, hoverBox_body } from "@/app/ultility/style-component";
 
-export default function Portfolio() {
+type ChildProps = {
+  data: any[];
+};
+
+const Portfolio: React.FC<ChildProps> = ({ data }) => {
   const cirConRef = useRef<HTMLDivElement | any>(null),
     cirRef = useRef<HTMLDivElement | any>(null),
     portRef = useRef<HTMLDivElement | null | any>(null),
@@ -73,7 +77,7 @@ export default function Portfolio() {
       gsap.to(galleryRef.current, {
         opacity: 0,
         width: 0,
-        heigth: "0%",
+        height: "0%",
       });
     }
     const delay = setTimeout(() => {
@@ -97,12 +101,11 @@ export default function Portfolio() {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (effect) {
       const axis: number = e.clientX;
-      // console.log(axis / screenWidth);
 
       if (axis >= screenWidth / 2) {
-        const move = (((2 * axis) / screenWidth - 1) * eyeMove) / 2;
+        const move = (((4 * axis) / screenWidth - 1) * eyeMove) / 2;
         const galMove: number =
-          (((2 * axis) / screenWidth - 1) * galleryMove) / 6;
+          (((2 * axis) / screenWidth - 1) * galleryMove) / 3;
 
         gsap.to(cirRef.current, {
           duration: 0.1,
@@ -204,8 +207,10 @@ export default function Portfolio() {
         onMouseLeave={effect! ? handleMouseLeave : undefined}
         ref={galConRef}
       >
-        <PortGallery ref={galleryRef} />
+        <PortGallery ref={galleryRef} data={data} />
       </Box>
     </Box>
   );
-}
+};
+
+export default Portfolio;

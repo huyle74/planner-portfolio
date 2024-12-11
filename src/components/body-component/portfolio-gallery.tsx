@@ -1,14 +1,15 @@
 import { forwardRef } from "react";
 import { Box } from "@mui/material";
 
-import { gallery_display } from "@/app/public/data";
+import { flexBox_Config } from "@/app/ultility/style-component";
 
-interface PortGalleryProps {
-  onMouseMove: () => any;
-}
+type PortGalleryProps = {
+  // onMouseMove: () => any;
+  data: any[];
+};
 
 const PortGallery = forwardRef<HTMLDivElement, PortGalleryProps>(
-  function gallery({ onMouseMove }, ref) {
+  function gallery({ data }, ref) {
     return (
       <Box
         ref={ref}
@@ -19,9 +20,9 @@ const PortGallery = forwardRef<HTMLDivElement, PortGalleryProps>(
           height: 0,
           opacity: 0,
         }}
-        onMouseMove={onMouseMove}
+        // onMouseMove={onMouseMove}
       >
-        {gallery_display.map((data, index) => (
+        {data.map((dt, index) => (
           <a
             style={{
               position: "relative",
@@ -34,22 +35,25 @@ const PortGallery = forwardRef<HTMLDivElement, PortGalleryProps>(
             }}
             key={index}
             className="portfolio-project"
-            href="#"
+            href={`/view/${dt.id}`}
           >
-            <img src={data.image} alt={data.title} className="moving-image" />
+            <img src={dt.uploadFile} alt={dt.title} className="moving-image" />
             <Box
               component="p"
               sx={{
                 fontSize: "25px",
                 color: "white",
                 position: "absolute",
-                top: "45%",
+                top: "50%",
+                left: "50%",
                 fontWeight: 700,
-                height: 0,
+                width: "100%",
+                transform: "translate(-50%, -50%)",
+                textAlign: "center",
               }}
               className="port-title"
             >
-              {data.title}
+              {dt.title}
             </Box>
           </a>
         ))}

@@ -4,7 +4,7 @@ body {
   font-family: "Comfortaa", sans-serif;
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: #f9cb75;
+  background-color: #ffffff;
   /* height: fit-content; */
 }
 
@@ -102,4 +102,127 @@ a {
 /* FOOTER */
 .social-icon:hover img {
   filter: brightness(0) invert(1);
+}
+
+/* ADMIN PAGE */
+.header-admin-button {
+  margin: 5px;
+}
+
+.cat-logo {
+  transition: 0.5s ease;
+}
+
+.cat-logo:hover {
+  transform: rotate(45deg);
+}
+
+/* CREATE PORTFOLIO ADMIN */
+.form-create-admin {
+  width: 50%;
+  margin: auto;
+}
+
+.form-fieldset-admin {
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-fieldset-admin label {
+  margin-top: 20px;
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+  width: 100%;
+  /* color: red;
+  border: blue 1px solid; */
+}
+
+.form-fieldset-admin input,
+textarea {
+  width: 100%;
+  font-size: 1rem;
+  resize: none;
+  max-height: 800px;
+  min-height: fit-content;
+}
+
+#submit-button {
+  margin-top: 1rem;
+  width: 30%;
+  height: 30px;
+  color: white;
+  background-color: black;
+}
+
+#submit-button:hover {
+  background-image: linear-gradient(rgb(136, 136, 136), rgb(69, 69, 69));
+  border-color: white;
+}
+
+#upload-file-button {
+  /* display: none; */
+  margin-bottom: 20px;
+  border: #000000 1px solid;
+  padding: 10px;
+}
+
+.people-form label {
+  font-size: 0.8rem;
+}
+
+.people-form input {
+  width: 90%;
+}
+
+/* VIEW PORTFOLIO */
+.portfolio-image {
+  -webkit-user-drag: element;
+}
+
+.MuiTabs-indicator {
+  display: none;
+}
+
+/* FOOTER */
+.footer-email-contact {
+  transition: 0.5s ease;
+}
+
+.footer-email-contact:hover {
+  border: none;
+}
+
+/* LOGIN ADMIN PAGE */
+.login-admin-form {
+  background-color: rgba(255, 255, 255, 0.4);
+  width: max-content;
+  height: max-content;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.login-admin-form label {
+  font-size: 1rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.login-admin-form input {
+  width: 220px;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 0;
+  border-radius: 5px;
+}
+
+#submit-login-admin {
+  margin-top: 15px;
+  padding: 9px;
+  height: 30px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 15px;
+  color: white;
+  pointer-events: painted;
 }

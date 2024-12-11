@@ -3,7 +3,6 @@ export const hoverBox_body: object = {
   alignItems: "center",
   justifyContent: "center",
   width: "100%",
-  // height: "100%",
   p: 3,
   "&:hover": {
     backgroundColor: "white",
@@ -19,4 +18,15 @@ export const flexBox_Config: object = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+};
+
+export const adminPage_config = {
+  // height: "100vh",
+  backgroundColor: "white",
+  color: "black",
+};
+
+export const adminPage_current = {
+  color: "yellow",
+  border: "yellow 1px solid",
 };

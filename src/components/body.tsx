@@ -7,7 +7,11 @@ import Portfolio from "./body-component/portfolio";
 
 import { flexBox_Config } from "@/app/ultility/style-component";
 
-export default function Body() {
+type ChildProps = {
+  data: any[];
+};
+
+const Body: React.FC<ChildProps> = ({ data }) => {
   return (
     <Box
       sx={{
@@ -32,11 +36,13 @@ export default function Body() {
           }}
         >
           <About />
-          <Portfolio />
+          <Portfolio data={data} />
           <Contact />
         </Box>
       </Box>
       <Footer />
     </Box>
   );
-}
+};
+
+export default Body;

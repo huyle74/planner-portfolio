@@ -20,9 +20,14 @@ const Header = forwardRef(function mainHead(
     [circleRef, setCircleRef] = useState<HTMLDivElement | any>(),
     [moving, setMoving] = useState<number | undefined | any>(),
     [halfScreenWidth, setHalfScreenWidth] = useState<number | any>(),
-    bannerRef = useRef<HTMLDivElement | any>();
+    bannerRef = useRef<HTMLDivElement | any>(),
+    [mobile, setMobile] = useState<boolean>(false);
 
   useEffect(() => {
+    if (window.innerWidth < 768) {
+      setMobile(true);
+    }
+
     const v = voRef.current.v();
     const circle: HTMLDivElement = voRef.current.circle();
     const container: HTMLDivElement = voRef.current.container();
@@ -104,9 +109,9 @@ const Header = forwardRef(function mainHead(
             height: "fit-content",
           }}
         >
-          <Huyen_word ref={huyenRef} />
+          <Huyen_word ref={huyenRef} mobile={mobile} />
           <Banner ref={bannerRef} />
-          <Vo_word ref={voRef} />
+          <Vo_word ref={voRef} mobile={mobile} />
         </Box>
         <Button
           sx={{ position: "absolute", bottom: "2%", width: "max-content" }}

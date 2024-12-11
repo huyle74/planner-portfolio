@@ -12,13 +12,20 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.7",
+    "@mui/lab": "^6.0.0-beta.16",
     "@mui/material": "^6.1.7",
+    "axios": "^1.7.8",
+    "dotenv": "^16.4.5",
     "gsap": "^3.12.5",
+    "jsonwebtoken": "^9.0.2",
+    "mysql": "^2.18.1",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react-draggable": "^4.4.6"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
