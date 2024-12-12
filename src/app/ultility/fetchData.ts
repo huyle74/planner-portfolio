@@ -28,6 +28,20 @@ export const mysqlData = async () => {
   }
 };
 
+export const mysqlDataForMainPage = async () => {
+  try {
+    const res = await axios.get(`${api_url}`);
+    if (!res) {
+      throw new Error(`HTTP error! status: ${res}`);
+    }
+
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+
 export const findPortfolio = async (id: string | number) => {
   const data = await mysqlData();
   const result = data.find((dt: any) => dt.id === Number(id));
