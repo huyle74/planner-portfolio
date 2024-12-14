@@ -9,8 +9,11 @@ const url = process.env.LOGIN_URL;
 const username = process.env.USER;
 const password = process.env.PASSWORD;
 
+
 export const AuthLogin = async (user: string, pass: string) => {
   try {
+    console.log(url);
+
     if (user !== username || pass !== password) {
       console.log("Wrong username or Password");
       return;
@@ -31,3 +34,5 @@ export const AuthLogin = async (user: string, pass: string) => {
     console.log(error);
   }
 };
+
+

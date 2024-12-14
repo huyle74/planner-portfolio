@@ -9,6 +9,7 @@ const api_url = process.env.API_URL;
 
 export const mysqlData = async () => {
   try {
+    console.log(api_url);
     const cookieStorage = cookies();
     const token = (await cookieStorage).get("access_token");
 
