@@ -4,7 +4,11 @@ import gsap from "gsap";
 
 import { hoverBox_body, flexBox_Config } from "@/app/ultility/style-component";
 
-export default function Contact() {
+type ChildProps = {
+  mobile: boolean;
+};
+
+const Contact: React.FC<ChildProps> = ({ mobile }) => {
   const oRef = useRef<HTMLDivElement | null>(null),
     [effect, setEffect] = useState<boolean>(false),
     wordRef = useRef<HTMLDivElement | null>(null),
@@ -14,7 +18,7 @@ export default function Contact() {
     let tl = gsap.timeline();
     if (effect) {
       tl.to(oRef.current, {
-        width: "30vw",
+        width: mobile ? "100vw" : "30vw",
         ease: "bounce",
       })
         .to(wordRef.current, {
@@ -30,7 +34,9 @@ export default function Contact() {
         display: "none",
       })
         .to(oRef.current, {
-          width: "65px",
+          width: mobile ? "50px" : "65px",
+          height: mobile ? "50px" : "65px",
+          borderRadius: mobile ? "25px" : "32.5px",
           ease: "bounce",
         })
         .to(infoRef.current, {
@@ -39,7 +45,7 @@ export default function Contact() {
           display: "none",
         });
     }
-  }, [effect]);
+  }, [effect, mobile]);
 
   const handleClick: any = () => {
     if (effect) {
@@ -60,16 +66,39 @@ export default function Contact() {
     >
       <a className="link" href="#contact" onClick={handleClick}>
         <Box
-          sx={{
-            ...hoverBox_body,
-          }}
+          sx={
+            mobile
+              ? {
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "100%",
+                  p: 3,
+                }
+              : hoverBox_body
+          }
         >
-          <p className="title-effect">C</p>
-          <Box className="o_letter" ref={oRef}>
+          <p
+            className="title-effect"
+            style={{
+              fontSize: mobile ? "3rem" : "5rem",
+            }}
+          >
+            C
+          </p>
+          <Box
+            className="o_letter"
+            ref={oRef}
+            sx={{
+              width: mobile ? "50px" : "65px",
+              height: mobile ? "50px" : "65px",
+              borderRadius: mobile ? "25px" : "32.5px",
+            }}
+          >
             <p
               style={{
                 display: "none",
-                fontSize: "1.8rem",
+                fontSize: mobile ? "0.7rem" : "1.8rem",
                 color: "#f9cb75",
                 width: "fit-content",
               }}
@@ -78,7 +107,14 @@ export default function Contact() {
               HOW CAN I HELP YOU?
             </p>
           </Box>
-          <p className="title-effect">NTACT</p>
+          <p
+            className="title-effect"
+            style={{
+              fontSize: mobile ? "3rem" : "5rem",
+            }}
+          >
+            NTACT
+          </p>
         </Box>
       </a>
       <Box
@@ -90,6 +126,7 @@ export default function Contact() {
           color: "black",
           textWrap: "nowrap",
           display: "none",
+          fontSize: mobile ? "0.9rem" : "",
         }}
         ref={infoRef}
       >
@@ -97,4 +134,6 @@ export default function Contact() {
       </Box>
     </Box>
   );
-}
+};
+
+export default Contact;

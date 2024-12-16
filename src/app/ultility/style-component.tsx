@@ -30,3 +30,5 @@ export const adminPage_current = {
   color: "yellow",
   border: "yellow 1px solid",
 };
+
+export const font_mobile_body = {};

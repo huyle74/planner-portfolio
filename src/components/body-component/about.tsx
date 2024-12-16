@@ -4,7 +4,11 @@ import gsap from "gsap";
 
 import { hoverBox_body } from "@/app/ultility/style-component";
 
-export default function About() {
+type ChildProps = {
+  mobile: boolean;
+};
+
+const About: React.FC<ChildProps> = ({ mobile }) => {
   const [effect, setEffect] = useState(false),
     oRef = useRef<HTMLDivElement | any>(null);
 
@@ -13,7 +17,7 @@ export default function About() {
 
     if (effect) {
       tl.to(oRef.current, {
-        width: "400px",
+        width: mobile ? "200px" : "400px",
         height: "400px",
         borderRadius: "200px",
         duration: 0.8,
@@ -26,14 +30,14 @@ export default function About() {
       tl.to(".para-about", {
         display: "none",
       }).to(oRef.current, {
-        width: "65px",
-        height: "65px",
-        borderRadius: "32.5px",
+        width: mobile ? "50px" : "65px",
+        height: mobile ? "50px" : "65px",
+        borderRadius: mobile ? "25px" : "32.5px",
         duration: 0.8,
         ease: "bounce",
       });
     }
-  }, [effect]);
+  }, [effect, mobile]);
 
   const handleClick = () => {
     if (!effect) {
@@ -45,12 +49,38 @@ export default function About() {
 
   return (
     <a href="#about" className="link" onClick={handleClick}>
-      <Box sx={{ ...hoverBox_body }}>
-        <p className="title-effect">AB</p>
-        <Box className="o_letter" ref={oRef}>
+      <Box
+        sx={
+          mobile
+            ? {
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",  p: 3,
+              }
+            : hoverBox_body
+        }
+      >
+        <p
+          className="title-effect"
+          style={{
+            fontSize: mobile ? "3rem" : "5rem",
+          }}
+        >
+          AB
+        </p>
+        <Box
+          className="o_letter"
+          ref={oRef}
+          sx={{
+            width: mobile ? "50px" : "65px",
+            height: mobile ? "50px" : "65px",
+            borderRadius: mobile ? "25px" : "32.5px",
+          }}
+        >
           <p
             style={{
-              fontSize: "15px",
+              fontSize: mobile ? "10px" : "15px",
               display: "none",
               color: "white",
               width: "80%",
@@ -71,8 +101,17 @@ export default function About() {
             implications.
           </p>
         </Box>
-        <p className="title-effect">UT</p>
+        <p
+          className="title-effect"
+          style={{
+            fontSize: mobile ? "3rem" : "5rem",
+          }}
+        >
+          UT
+        </p>
       </Box>
     </a>
   );
-}
+};
+
+export default About;

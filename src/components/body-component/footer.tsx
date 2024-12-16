@@ -1,21 +1,18 @@
 import { Box } from "@mui/material";
-import { flexBox_Config } from "@/app/ultility/style-component";
 
-export default function Footer() {
+type ChildProps = {
+  mobile: boolean;
+};
+
+const Footer: React.FC<ChildProps> = ({ mobile }) => {
   return (
-    <Box
-      sx={{
-        ...flexBox_Config,
-        // border: "1px black solid",
-        width: "100%",
-        alignSelf: "end",
-        marginTop: "auto",
-      }}
-    >
+    <Box>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <a
           href="#LinkedIn"
-          style={{ width: "2em", height: "auto", margin: "8px" }}
+          style={{
+            margin: "8px",
+          }}
           className="social-icon"
         >
           <img
@@ -25,7 +22,9 @@ export default function Footer() {
         </a>
         <a
           href="#instagram"
-          style={{ width: "2em", height: "auto", margin: "8px" }}
+          style={{
+            margin: "8px",
+          }}
           className="social-icon"
         >
           <img
@@ -35,11 +34,17 @@ export default function Footer() {
         </a>
       </Box>
       <p
-        style={{ fontSize: "15px", marginTop: "2em", paddingBottom: "2em" }}
+        style={{
+          fontSize: "15px",
+          paddingBottom: "2em",
+          textAlign: "center",
+        }}
         className="name-footer"
       >
         Huyen Vo 2024
       </p>
     </Box>
   );
-}
+};
+
+export default Footer;

@@ -35,10 +35,12 @@ const Header = forwardRef(function mainHead(
 
     const halfScreen: number = window.innerWidth / 2;
     setHalfScreenWidth(halfScreen);
+
     const delayMeasure = setTimeout(() => {
       const conWidth: number = container.offsetWidth;
       const moving: number = window.innerWidth / conWidth;
       setMoving(moving);
+      console.log(conWidth, moving);
     }, 2000);
 
     const banner: HTMLDivElement = bannerRef.current.banner();
@@ -71,6 +73,7 @@ const Header = forwardRef(function mainHead(
       duration: 1,
       ease: "bounce",
     });
+
     return () => clearTimeout(delayMeasure);
   }, []);
 
@@ -78,6 +81,7 @@ const Header = forwardRef(function mainHead(
     const x = e.clientX;
     if (x > halfScreenWidth) {
       const move = x / moving / 2.4;
+      // console.log(move);
       gsap.to(circleRef, {
         x: -move,
         duration: 1,
@@ -85,6 +89,7 @@ const Header = forwardRef(function mainHead(
       });
     } else {
       const move: number = (window.innerWidth - x) / moving / 2.4;
+      // console.log(move);
       gsap.to(circleRef, {
         x: move,
         duration: 1,
@@ -94,10 +99,17 @@ const Header = forwardRef(function mainHead(
   };
 
   return (
-    <Box sx={{ width: "100vw", height: "100vh" }} onMouseMove={handleMouseMove}>
+    <Box
+      sx={{
+        mt: mobile ? 9 : "",
+        width: "100vw",
+        height: "100%",
+      }}
+      onMouseMove={handleMouseMove}
+    >
       <Box
         sx={{
-          height: "100vh",
+          height: mobile ? "fit-content" : "100vh",
           ...flexBox_Config,
           position: "relative",
         }}
@@ -111,15 +123,21 @@ const Header = forwardRef(function mainHead(
         >
           <Huyen_word ref={huyenRef} mobile={mobile} />
           <Banner ref={bannerRef} />
-          <Vo_word ref={voRef} mobile={mobile} />
+          <Vo_word ref={voRef} />
         </Box>
-        <Button
-          sx={{ position: "absolute", bottom: "2%", width: "max-content" }}
-          ref={arrowRef}
-          href="#about"
-        >
-          <ExpandMoreIcon sx={{ fontSize: "90px", color: "black" }} />
-        </Button>
+        {mobile ? (
+          ""
+        ) : (
+          <Button
+            sx={{
+              width: "max-content",
+            }}
+            ref={arrowRef}
+            href="#about"
+          >
+            <ExpandMoreIcon sx={{ fontSize: "90px", color: "black" }} />
+          </Button>
+        )}
       </Box>
     </Box>
   );

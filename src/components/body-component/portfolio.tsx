@@ -8,9 +8,10 @@ import { flexBox_Config, hoverBox_body } from "@/app/ultility/style-component";
 
 type ChildProps = {
   data: any[];
+  mobile: boolean;
 };
 
-const Portfolio: React.FC<ChildProps> = ({ data }) => {
+const Portfolio: React.FC<ChildProps> = ({ data, mobile }) => {
   const cirConRef = useRef<HTMLDivElement | any>(null),
     cirRef = useRef<HTMLDivElement | any>(null),
     portRef = useRef<HTMLDivElement | null | any>(null),
@@ -36,11 +37,11 @@ const Portfolio: React.FC<ChildProps> = ({ data }) => {
 
   useEffect(() => {
     if (effect) {
-      gsap.to(".body-container", {
+      gsap.to(".body_mainPage", {
         height: "100%",
       });
       gsap.to(cirConRef.current, {
-        width: "20rem",
+        width: mobile ? "10rem" : "20rem",
         duration: 0.5,
         ease: "bounce",
       });
@@ -49,16 +50,19 @@ const Portfolio: React.FC<ChildProps> = ({ data }) => {
         ease: "power3.inOut",
       });
       gsap.to(galConRef.current, {
-        height: "fit-content",
+        height: "100%",
       });
       gsap.to(galleryRef.current, {
         opacity: 1,
         width: "max-content",
         height: "100%",
       });
+      gsap.to(".portfolio-project", {
+        height: mobile ? "50px" : "100%",
+      });
     } else {
-      gsap.to(".body-container", {
-        height: "100vh",
+      gsap.to(".body_mainPage", {
+        height: mobile ? "fit-content" : "100vh",
       });
       gsap.to(cirRef.current, {
         transform: "translateY(0)",
@@ -66,7 +70,9 @@ const Portfolio: React.FC<ChildProps> = ({ data }) => {
         duration: 0.3,
       });
       gsap.to(cirConRef.current, {
-        width: "65px",
+        width: mobile ? "50px" : "65px",
+        height: mobile ? "50px" : "65px",
+        borderRadius: mobile ? "25px" : "32.5px",
         duration: 0.4,
         ease: "bounce.out",
       });
@@ -79,16 +85,18 @@ const Portfolio: React.FC<ChildProps> = ({ data }) => {
         width: 0,
         height: "0%",
       });
+      gsap.to(".portfolio-project", {
+        height: 0,
+      });
     }
     const delay = setTimeout(() => {
       if (effect) {
         const galleryWidth = galleryRef.current.offsetWidth;
-        console.log(galleryWidth);
         setGalleryMove(galleryWidth);
       }
     }, 1000);
     return () => clearTimeout(delay);
-  }, [effect]);
+  }, [effect, mobile]);
 
   const handleClick = () => {
     if (effect) {
@@ -149,7 +157,6 @@ const Portfolio: React.FC<ChildProps> = ({ data }) => {
       sx={{
         height: "100%",
         ...flexBox_Config,
-        // border: "1px red solid",
       }}
     >
       <a
@@ -158,15 +165,34 @@ const Portfolio: React.FC<ChildProps> = ({ data }) => {
         onClick={handleClick}
         ref={portRef}
       >
-        <Box sx={{ ...hoverBox_body }}>
-          <p className="title-effect">PORTF</p>
+        <Box
+          sx={
+            mobile
+              ? {
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "100%",
+                  p: 3,
+                }
+              : hoverBox_body
+          }
+        >
+          <p
+            className="title-effect"
+            style={{
+              fontSize: mobile ? "3rem" : "5rem",
+            }}
+          >
+            PORTF
+          </p>
           <Box
             sx={{
-              width: "65px",
               ...flexBox_Config,
               backgroundColor: "white",
-              height: "65px",
-              borderRadius: "32.5px",
+              width: mobile ? "50px" : "65px",
+              height: mobile ? "50px" : "65px",
+              borderRadius: mobile ? "25px" : "32.5px",
               overflow: "hidden",
             }}
             ref={cirConRef}
@@ -190,7 +216,14 @@ const Portfolio: React.FC<ChildProps> = ({ data }) => {
               ></Box>
             </Box>
           </Box>
-          <p className="title-effect">LIO</p>
+          <p
+            className="title-effect"
+            style={{
+              fontSize: mobile ? "3rem" : "5rem",
+            }}
+          >
+            LIO
+          </p>
         </Box>
       </a>
       <Box
@@ -207,7 +240,7 @@ const Portfolio: React.FC<ChildProps> = ({ data }) => {
         onMouseLeave={effect! ? handleMouseLeave : undefined}
         ref={galConRef}
       >
-        <PortGallery ref={galleryRef} data={data} />
+        <PortGallery ref={galleryRef} data={data} mobile={mobile} />
       </Box>
     </Box>
   );
