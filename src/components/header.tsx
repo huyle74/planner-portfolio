@@ -14,13 +14,13 @@ const Header = forwardRef(function mainHead(
   props: object,
   ref: ForwardedRef<HTMLDivElement>
 ) {
-  const arrowRef = useRef<HTMLDivElement | any>(),
-    voRef = useRef<HTMLDivElement | any>(),
-    huyenRef = useRef<HTMLDivElement | any>(),
-    [circleRef, setCircleRef] = useState<HTMLDivElement | any>(),
-    [moving, setMoving] = useState<number | undefined | any>(),
-    [halfScreenWidth, setHalfScreenWidth] = useState<number | any>(),
-    bannerRef = useRef<HTMLDivElement | any>(),
+  const arrowRef = useRef<HTMLDivElement | any>(null),
+    voRef = useRef<HTMLDivElement | any>(null),
+    huyenRef = useRef<HTMLDivElement | any>(null),
+    [circleRef, setCircleRef] = useState<HTMLDivElement | any>(null),
+    [moving, setMoving] = useState<number | undefined | any>(null),
+    [halfScreenWidth, setHalfScreenWidth] = useState<number | any>(null),
+    bannerRef = useRef<HTMLDivElement | any>(null),
     [mobile, setMobile] = useState<boolean>(false);
 
   useEffect(() => {

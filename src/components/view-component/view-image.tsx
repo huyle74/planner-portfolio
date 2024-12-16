@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useRef } from "react";
 
 import Draggable from "react-draggable";
@@ -18,11 +20,12 @@ const ViewImage: React.FC<ChildProps> = ({ onClick, imageUrl }) => {
   const [drag, setDrag] = useState<boolean>(false),
     [initWidth, setInitWith] = useState<number>(0),
     [size, setSize] = useState<number>(0),
-    nodeRef = useRef(null),
+    nodeRef = useRef<null | HTMLDivElement>(null),
     [value, setValue] = useState<number>(0);
 
   // INITIAL VALUE SETTING
   useEffect(() => {
+    console.log(imageUrl);
     const imageRef = document.getElementById("portfolio-image");
     const widthImage = imageRef?.offsetWidth;
 
@@ -133,27 +136,28 @@ const ViewImage: React.FC<ChildProps> = ({ onClick, imageUrl }) => {
           }}
         >
           <Draggable
-            nodeRef={nodeRef}
+            nodeRef={nodeRef as React.RefObject<HTMLDivElement>}
             onStart={handleDragStart}
             onStop={handleDragStop}
             disabled={drag}
             grid={[50, 50]}
           >
-            <img
-              onClick={handleClickToZoom}
-              ref={nodeRef}
-              id="portfolio-image"
-              src={imageUrl}
-              alt="image"
-              style={{
-                width: "50%",
-                height: "auto",
-                objectFit: "cover",
-                backgroundColor: "#2e2e2e",
-                transition: "0.5s ease",
-                cursor: "grab",
-              }}
-            />
+            <div ref={nodeRef}>
+              <img
+                onClick={handleClickToZoom}
+                id="portfolio-image"
+                src={imageUrl}
+                alt="image"
+                style={{
+                  width: "50%",
+                  height: "auto",
+                  objectFit: "cover",
+                  backgroundColor: "#2e2e2e",
+                  transition: "0.5s ease",
+                  cursor: "grab",
+                }}
+              />
+            </div>
           </Draggable>
           <Stack
             spacing={2}

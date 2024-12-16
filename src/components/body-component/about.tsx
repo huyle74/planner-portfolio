@@ -6,7 +6,7 @@ import { hoverBox_body } from "@/app/ultility/style-component";
 
 export default function About() {
   const [effect, setEffect] = useState(false),
-    oRef = useRef<HTMLDivElement | any>();
+    oRef = useRef<HTMLDivElement | any>(null);
 
   useEffect(() => {
     const tl = gsap.timeline();

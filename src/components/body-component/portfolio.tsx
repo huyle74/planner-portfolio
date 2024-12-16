@@ -19,7 +19,7 @@ const Portfolio: React.FC<ChildProps> = ({ data }) => {
     [eyeMove, setEyeMove] = useState<number | any>(),
     [galleryMove, setGalleryMove] = useState<number | any>(),
     [screenWidth, setScreenWidth] = useState<number | null | any>(),
-    galConRef = useRef<HTMLDivElement | any>();
+    galConRef = useRef<HTMLDivElement | any>(null);
 
   useEffect(() => {
     const screen: number = window.innerWidth;

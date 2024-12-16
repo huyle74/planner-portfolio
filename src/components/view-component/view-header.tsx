@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Button, IconButton } from "@mui/material";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import ClearIcon from "@mui/icons-material/Clear";

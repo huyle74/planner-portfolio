@@ -1,5 +1,7 @@
-import React from "react";
+"use client";
+
 import { useState } from "react";
+import React from "react";
 import { Box } from "@mui/material";
 
 import { flexBox_Config } from "@/app/ultility/style-component";

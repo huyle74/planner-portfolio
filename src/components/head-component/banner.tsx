@@ -13,8 +13,8 @@ interface CustomRef {
 }
 
 const Banner = forwardRef<CustomRef>((props, ref) => {
-  const bannerContainerRef = useRef<HTMLDivElement | any>(),
-    titleRef = useRef<HTMLDivElement | any>();
+  const bannerContainerRef = useRef<HTMLDivElement | any>(null),
+    titleRef = useRef<HTMLDivElement | any>(null);
 
   useImperativeHandle(ref, () => ({
     banner: () => bannerContainerRef.current,

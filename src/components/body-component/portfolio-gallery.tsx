@@ -1,10 +1,7 @@
 import { forwardRef } from "react";
 import { Box } from "@mui/material";
 
-import { flexBox_Config } from "@/app/ultility/style-component";
-
 type PortGalleryProps = {
-  // onMouseMove: () => any;
   data: any[];
 };
 
