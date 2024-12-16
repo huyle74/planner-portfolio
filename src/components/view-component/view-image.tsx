@@ -14,18 +14,18 @@ import { flexBox_Config } from "@/app/ultility/style-component";
 type ChildProps = {
   onClick: () => void;
   imageUrl: string;
+  mobile: boolean;
 };
 
-const ViewImage: React.FC<ChildProps> = ({ onClick, imageUrl }) => {
+const ViewImage: React.FC<ChildProps> = ({ onClick, imageUrl, mobile }) => {
   const [drag, setDrag] = useState<boolean>(false),
     [initWidth, setInitWith] = useState<number>(0),
     [size, setSize] = useState<number>(0),
-    nodeRef = useRef<null | HTMLDivElement>(null),
+    nodeRef = useRef<null | HTMLImageElement>(null),
     [value, setValue] = useState<number>(0);
 
   // INITIAL VALUE SETTING
   useEffect(() => {
-    console.log(imageUrl);
     const imageRef = document.getElementById("portfolio-image");
     const widthImage = imageRef?.offsetWidth;
 
@@ -79,27 +79,28 @@ const ViewImage: React.FC<ChildProps> = ({ onClick, imageUrl }) => {
   return (
     <Box
       sx={{
+        p: 0,
         height: "100vh",
         backgroundColor: "#2e2e2e",
-        width: "100%",
+        width: "100vw",
         position: "relative",
+        ...flexBox_Config,
+        alignItems: "space-between",
       }}
       className="image-container"
     >
       <Box
         sx={{
-          ...flexBox_Config,
           borderBottom: "0.5px white solid",
-          pt: 1,
-          pb: 1,
-          position: "relative",
+          pt: mobile ? 0 : 1,
+          pb: mobile ? 0 : 1,
+          width: "100%",
+          display: "flex",
           height: "10vh",
+          justifyContent: "center",
         }}
       >
-        <IconButton
-          sx={{ color: "white", position: "absolute", right: "1%" }}
-          onClick={onClick}
-        >
+        <IconButton sx={{ color: "white", ml: "auto" }} onClick={onClick}>
           <CloseIcon
             sx={{
               border: "white 1px solid",
@@ -116,10 +117,10 @@ const ViewImage: React.FC<ChildProps> = ({ onClick, imageUrl }) => {
       </Box>
       <Box
         sx={{
-          p: 3,
+          p: mobile ? 1 : 3,
           backgroundColor: "black",
+          width: "100vw",
           height: "80vh",
-          m: "auto",
           borderBottom: "0.5px solid white",
           ...flexBox_Config,
         }}
@@ -129,35 +130,34 @@ const ViewImage: React.FC<ChildProps> = ({ onClick, imageUrl }) => {
             backgroundColor: "#2e2e2e",
             m: "auto",
             height: "85vh",
-            width: "95vw",
+            width: mobile ? "90vw" : "95vw",
             overflow: "hidden",
             position: "relative",
             ...flexBox_Config,
           }}
         >
           <Draggable
-            nodeRef={nodeRef as React.RefObject<HTMLDivElement>}
+            nodeRef={nodeRef as React.RefObject<HTMLImageElement>}
             onStart={handleDragStart}
             onStop={handleDragStop}
             disabled={drag}
             grid={[50, 50]}
           >
-            <div ref={nodeRef}>
-              <img
-                onClick={handleClickToZoom}
-                id="portfolio-image"
-                src={imageUrl}
-                alt="image"
-                style={{
-                  width: "50%",
-                  height: "auto",
-                  objectFit: "cover",
-                  backgroundColor: "#2e2e2e",
-                  transition: "0.5s ease",
-                  cursor: "grab",
-                }}
-              />
-            </div>
+            <img
+              ref={nodeRef}
+              onClick={handleClickToZoom}
+              id="portfolio-image"
+              src={imageUrl}
+              alt="image"
+              style={{
+                width: mobile ? "90%" : "50%",
+                height: "auto",
+                objectFit: "cover",
+                backgroundColor: "#2e2e2e",
+                transition: "0.5s ease",
+                cursor: "grab",
+              }}
+            />
           </Draggable>
           <Stack
             spacing={2}
@@ -188,6 +188,9 @@ const ViewImage: React.FC<ChildProps> = ({ onClick, imageUrl }) => {
           </Stack>
         </Box>
       </Box>
+      <Box
+        sx={{ height: "10vh", backgroundColor: "#2e2e2e", mt: "auto" }}
+      ></Box>
     </Box>
   );
 };

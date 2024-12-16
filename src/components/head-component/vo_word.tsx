@@ -118,6 +118,7 @@ const Vo_word = forwardRef<CustomRef>((props, ref) => {
         color: "black",
       });
     }
+    return () => gsap.killTweensOf(circleRef.current);
   }, [effect, mobile]);
 
   const handleEyeEffect = () => {
@@ -180,6 +181,7 @@ const Vo_word = forwardRef<CustomRef>((props, ref) => {
           ref={circleContainerRef}
         >
           <Box
+            className="circle_eye_header"
             ref={circleRef}
             sx={{
               height: mobile ? "90px" : "160px",

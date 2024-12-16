@@ -21,7 +21,8 @@ const Header = forwardRef(function mainHead(
     [moving, setMoving] = useState<number | undefined | any>(null),
     [halfScreenWidth, setHalfScreenWidth] = useState<number | any>(null),
     bannerRef = useRef<HTMLDivElement | any>(null),
-    [mobile, setMobile] = useState<boolean>(false);
+    [mobile, setMobile] = useState<boolean>(false),
+    [eyeMove, setEyeMove] = useState<number>(1);
 
   useEffect(() => {
     if (window.innerWidth < 768) {
@@ -36,12 +37,9 @@ const Header = forwardRef(function mainHead(
     const halfScreen: number = window.innerWidth / 2;
     setHalfScreenWidth(halfScreen);
 
-    const delayMeasure = setTimeout(() => {
-      const conWidth: number = container.offsetWidth;
-      const moving: number = window.innerWidth / conWidth;
-      setMoving(moving);
-      console.log(conWidth, moving);
-    }, 2000);
+    const instance: number = window.innerWidth / 534;
+    setMoving(instance);
+    console.log(instance);
 
     const banner: HTMLDivElement = bannerRef.current.banner();
 
@@ -73,29 +71,27 @@ const Header = forwardRef(function mainHead(
       duration: 1,
       ease: "bounce",
     });
-
-    return () => clearTimeout(delayMeasure);
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const x = e.clientX;
-    if (x > halfScreenWidth) {
-      const move = x / moving / 2.4;
-      // console.log(move);
-      gsap.to(circleRef, {
-        x: -move,
-        duration: 1,
-        ease: "power2.Out",
-      });
-    } else {
-      const move: number = (window.innerWidth - x) / moving / 2.4;
-      // console.log(move);
-      gsap.to(circleRef, {
-        x: move,
-        duration: 1,
-        ease: "power2.Out",
-      });
+  useEffect(() => {
+    if (!circleRef) {
+      return;
     }
+
+    const move =
+      eyeMove > halfScreenWidth
+        ? -eyeMove / moving / 2.4
+        : (window.innerWidth - eyeMove) / moving / 2.4;
+
+    gsap.to(".circle_eye_header", {
+      x: move,
+      duration: 1,
+      ease: "power2.out",
+    });
+  }, [eyeMove]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setEyeMove(e.clientX);
   };
 
   return (

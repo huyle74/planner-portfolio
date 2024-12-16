@@ -11,9 +11,10 @@ import ViewCredits from "./view-body-credits";
 
 type ChildProps = {
   data: any;
+  mobile: boolean;
 };
 
-const ViewBody: React.FC<ChildProps> = ({ data }) => {
+const ViewBody: React.FC<ChildProps> = ({ data, mobile }) => {
   const barRef = useRef<HTMLDivElement | null>(null),
     [barHeight, setBarHeight] = useState<number>(0),
     [value, setValue] = useState<string>("1");
@@ -45,12 +46,15 @@ const ViewBody: React.FC<ChildProps> = ({ data }) => {
   };
 
   return (
-    <Box sx={{ width: "80%", m: "auto", mt: 10, mb: 7 }} ref={barRef}>
+    <Box
+      sx={{ width: mobile ? "95%" : "80%", m: "auto", mt: 10, mb: 7 }}
+      ref={barRef}
+    >
       <TabContext value={value}>
         <Box
           sx={{
             backgroundColor: "white",
-            border: "2px black solid",
+            border: `${mobile ? "0.7px" : "2px"} black solid`,
             borderRadius: `${barHeight}px`,
             mb: 4,
           }}

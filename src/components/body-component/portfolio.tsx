@@ -232,7 +232,6 @@ const Portfolio: React.FC<ChildProps> = ({ data, mobile }) => {
           width: "100vw",
           display: "flex",
           justifyContent: "center",
-          // border: "red 1px solid",
           height: 0,
           overflowY: "hidden",
         }}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import { Box } from "@mui/material";
 
@@ -20,7 +20,14 @@ type ChildProps = {
 };
 
 const View: React.FC<ChildProps> = ({ data }) => {
-  const [view, setView] = useState(false);
+  const [view, setView] = useState(false),
+    [mobile, setMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (window.innerWidth < 758) {
+      setMobile(true);
+    }
+  }, []);
 
   const handleClickCView = () => {
     if (view) {
@@ -40,12 +47,16 @@ const View: React.FC<ChildProps> = ({ data }) => {
     >
       {view ? (
         <Box sx={{ width: "100%" }}>
-          <ViewImage imageUrl={data.uploadFile} onClick={handleClickCView} />
+          <ViewImage
+            imageUrl={data.uploadFile}
+            onClick={handleClickCView}
+            mobile={mobile}
+          />
         </Box>
       ) : (
         <Box sx={{ width: "100%" }}>
-          <ViewHeader data={data} onClick={handleClickCView} />
-          <ViewBody data={data} />
+          <ViewHeader data={data} onClick={handleClickCView} mobile={mobile} />
+          <ViewBody data={data} mobile={mobile} />
           <ViewFooter />
         </Box>
       )}
