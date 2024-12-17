@@ -31,7 +31,7 @@ export default function Main() {
         flexDirection: "column",
       }}
     >
-      <Header />
+      <Header mobile={mobile} />
       <Box
         sx={{
           height: mobile ? "" : "100vh",

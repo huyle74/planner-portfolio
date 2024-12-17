@@ -10,25 +10,23 @@ import Banner from "./head-component/banner";
 
 import { flexBox_Config } from "@/app/ultility/style-component";
 
+type ChildProps = {
+  mobile: boolean;
+};
+
 const Header = forwardRef(function mainHead(
-  props: object,
+  { mobile }: ChildProps,
   ref: ForwardedRef<HTMLDivElement>
 ) {
   const arrowRef = useRef<HTMLDivElement | any>(null),
     voRef = useRef<HTMLDivElement | any>(null),
     huyenRef = useRef<HTMLDivElement | any>(null),
     [circleRef, setCircleRef] = useState<HTMLDivElement | any>(null),
-    [moving, setMoving] = useState<number | undefined | any>(null),
     [halfScreenWidth, setHalfScreenWidth] = useState<number | any>(null),
     bannerRef = useRef<HTMLDivElement | any>(null),
-    [mobile, setMobile] = useState<boolean>(false),
     [eyeMove, setEyeMove] = useState<number>(1);
 
   useEffect(() => {
-    if (window.innerWidth < 768) {
-      setMobile(true);
-    }
-
     const v = voRef.current.v();
     const circle: HTMLDivElement = voRef.current.circle();
     const container: HTMLDivElement = voRef.current.container();
@@ -37,14 +35,9 @@ const Header = forwardRef(function mainHead(
     const halfScreen: number = window.innerWidth / 2;
     setHalfScreenWidth(halfScreen);
 
-    const instance: number = window.innerWidth / 534;
-    setMoving(instance);
-    console.log(instance);
-
     const banner: HTMLDivElement = bannerRef.current.banner();
 
     const tl = gsap.timeline();
-
     gsap.to(huyenRef.current, {
       duration: 1,
       ease: "bounce",
@@ -77,7 +70,9 @@ const Header = forwardRef(function mainHead(
     if (!circleRef) {
       return;
     }
+    const containerWidth = mobile ? 254 : 534;
 
+    const moving: number = window.innerWidth / containerWidth;
     const move =
       eyeMove > halfScreenWidth
         ? -eyeMove / moving / 2.4
