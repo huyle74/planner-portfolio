@@ -30,7 +30,7 @@ const BodyCreateAdmin = () => {
       }}
     >
       <form
-        action="https://portfolio-be-257238999717.us-central1.run.app/portfolio/create-portfolio"
+        action="https://portfolio-be-257238999717.us-central1.run.app/create-portfolio"
         method="post"
         className="form-create-admin"
         encType="multipart/form-data"
