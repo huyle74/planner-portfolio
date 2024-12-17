@@ -2,7 +2,6 @@
 
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
 import dotenv from "dotenv";
 
 dotenv.config();

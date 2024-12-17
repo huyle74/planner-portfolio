@@ -5,26 +5,24 @@ import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
 
-const url = process.env.LOGIN_URL;
+const url = process.env.API_URL;
 const username = process.env.USER;
 const password = process.env.PASSWORD;
 
-
 export const AuthLogin = async (user: string, pass: string) => {
   try {
-    console.log(url);
-
     if (user !== username || pass !== password) {
       console.log("Wrong username or Password");
       return;
     } else {
       const cookieStorage = cookies();
 
-      const response = await axios.post(`${url}/login`, {
+      const response = await axios.post(`${url}/auth/login`, {
         username: user,
         password: pass,
       });
       const token = response.data.access_token;
+      console.log(response.data);
 
       (await cookieStorage).set("access_token", token);
 
@@ -34,5 +32,3 @@ export const AuthLogin = async (user: string, pass: string) => {
     console.log(error);
   }
 };
-
-
