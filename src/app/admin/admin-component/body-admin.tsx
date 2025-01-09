@@ -49,7 +49,7 @@ const BodyAdmin: React.FC<ChildProps> = () => {
       <Grid2 container spacing={2} sx={{ width: "90%", m: "auto" }}>
         {data.map((dt, index) => {
           return (
-            <Grid2 size={2} key={index + dt.id}>
+            <Grid2 size={{ md: 2, xs: 6 }} key={index + dt.id}>
               <PortTag
                 image={dt.uploadFile}
                 title={dt.title}

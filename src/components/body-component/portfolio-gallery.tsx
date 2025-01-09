@@ -36,7 +36,7 @@ const PortGallery = forwardRef<HTMLDivElement, PortGalleryProps>(
                     key={index}
                     className="portfolio-project"
                     href={`/view/${dt.id}`}
-                  > 
+                  >
                     <img
                       src={dt.uploadFile}
                       alt={dt.title}
@@ -80,6 +80,7 @@ const PortGallery = forwardRef<HTMLDivElement, PortGalleryProps>(
                 zIndex: 1000,
                 display: "flex",
                 justifyContent: "center",
+                backgroundColor: "#f9cb75",
               }}
               key={index}
               className="portfolio-project"

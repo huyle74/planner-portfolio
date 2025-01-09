@@ -58,7 +58,7 @@ const Portfolio: React.FC<ChildProps> = ({ data, mobile }) => {
         height: "100%",
       });
       gsap.to(".portfolio-project", {
-        height: mobile ? "50px" : "100%",
+        height: mobile ? "50px" : "50vh",
       });
     } else {
       gsap.to(".body_mainPage", {
