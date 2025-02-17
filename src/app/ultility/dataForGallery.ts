@@ -56,56 +56,33 @@ export const data = [
     execution:
       "Giai đoạn 1: Tạo nhận thức - Tạo câu chuyện nhãn hàng. \n\nTrong giai đoạn này, XYZ Saigon ra mắt MV với sự xuất hiện của các gương mặt nổi bật trong giới trẻ như Low G, Mỹ Anh, Nân và BlingBabi. “Điểm chung của cả 4 talent (tài năng) chính là sự tự do, phóng khoáng và không rập khuôn. Tuy nhiên họ sẽ truyền đi những thông điệp khác nhau trong chiến dịch Thiên Biến Vạn Sắc Lì”, theo lời chị Ivyn Nguyễn.\n\nGiọng ca trẻ Mỹ Anh sẽ truyền đi thông điệp “Gen Z có nhiều định danh”. “Bạn ấy có thể là ca sĩ, là người trình diễn trên sân khấu. Nhưng đằng sau đó bạn cũng là một người viết nhạc với những cá tính khác nhau”, chị Ivyn nói. Trong khi đó, ca sĩ indie Nân sẽ gai góc hơn, người kể chính của câu chuyện “Cách gen Z dùng mỹ phẩm sẽ thay đổi theo tâm trạng”. BlingBabi là hot TikToker lĩnh vực làm đẹp, vậy nên cô nàng sẽ đại diện cho xu hướng đa di năng mới của gen Z là sáng đi học, tối có thể là TikToker, có những biến hoá đa dạng trong các hoạt động của mình. Cuối cùng, Low G sẽ đóng vai trò là người thứ ba nhìn vào, ghi nhận và tôn trọng tất cả những định danh đó.\n\nGiai đoạn 2: Tăng chuyển đổi - Tạo câu chuyện bán hàng\n\nMột chiến dịch có thông điệp nhất quán và nội dung rõ ràng thì sẽ tạo được đột phá doanh thu. Trong giai đoạn này, BlingBabi sẽ đăng tải các video dùng thử sản phẩm trên nền tảng TikTok. Loạt video này sẽ vừa tiếp cận người dùng gen Z và chuyển đổi họ sang các trang thương mại điện tử thông qua các đường link, vừa truyền cảm hứng cho hơn 300 KOC cùng sản xuất các video có nội dung tương tự, đính kèm các chương trình khuyến mãi hấp dẫn để kích thích người mua. ",
   },
-  //   {
-  //     id: 98031,
-  //     uploadFile: "https://storage.cloud.google.com/huyenvo--portfolio/media.jpg",
-  //     title: "",
-  //     people: [
-  //       {
-  //         company: "",
-  //         name: "",
-  //         role: "",
-  //       },
-  //       {
-  //         company: "",
-  //         name: "",
-  //         role: "",
-  //       },
-  //       {
-  //         company: "",
-  //         name: "",
-  //         role: "",
-  //       },
-  //     ],
-  //     background: "",
-  //     creative: "",
-  //     strategy: "",
-  //     execution: "",
-  //   },
-  //   {
-  //     id: 98031,
-  //     uploadFile: "https://storage.cloud.google.com/huyenvo--portfolio/media.jpg",
-  //     title: "",
-  //     people: [
-  //       {
-  //         company: "",
-  //         name: "",
-  //         role: "",
-  //       },
-  //       {
-  //         company: "",
-  //         name: "",
-  //         role: "",
-  //       },
-  //       {
-  //         company: "",
-  //         name: "",
-  //         role: "",
-  //       },
-  //     ],
-  //     background: "",
-  //     creative: "",
-  //     strategy: "",
-  //     execution: "",
-  //   },
+  {
+    id: 847292,
+    uploadFile:
+      "https://storage.cloud.google.com/huyenvo--portfolio/berroca.jpeg",
+    title: `Mấy Bé Lì 3.0 Lên mặt cùng Khuyết Điểm 10 - Một chiến dịch rất "thái độ" để tôn vinh nét đẹp cá nhân`,
+    people: [
+      {
+        company: "Advertising Vietnam",
+        name: "My Tang",
+        role: "Content Creator",
+      },
+      {
+        company: "Anymind Group",
+        name: "Huyen Vo",
+        role: "Senior Planner",
+      },
+    ],
+    background:
+      "Là một thương hiệu dẫn đầu trong ngành trang điểm và làm đẹp tại Việt Nam, suốt 3 năm qua, Maybelline đã tung ra nhiều chiến dịch marketing cực kỳ thành công, gần đây nhất là chiến dịch Mấy Bé Lì 2.0 - Thiên biến vạn sắc Lì. \n\nThiên biến vạn sắc Lì đã tạo được sức ảnh hưởng trên các nền tảng mạng xã hội vì phản ánh được khao khát muốn được thể hiện phong \\ncách và quan điểm sống của gen Z. Sau khi kết thúc chiến dịch, Mấy Bé Lì 2.0 đã “ẵm” trọn 3 chiếc cúp giải thưởng:\n\nSilver MMA Vietnam\n\nBronze MMA APAC\n\nBronze MMA GLOBAL",
+    creative: `Thế hệ Z thường được gọi bằng rất nhiều từ như "ngông", "lì", "bốc đồng", "dám nghĩ dám làm" nhưng lý do đằng sau chỉ có một, đó là bởi vì sự tự tin đáng ngưỡng mộ của thế hệ trẻ này, so với thế hệ Millennials hay thế hệ Gen X trước đó. Sự tự tin của Gen Z không phải chỉ ở những hành động bên ngoài mà bắt nguồn từ nhận thức, đặc biệt là nhận thức về cái đẹp và vẻ ngoài.`,
+    strategy: `Trong chiến dịch Mấy Bé Lì 2.0 – Thiên biến vạn sắc Lì năm ngoái, Maybelline đóng vai trò như một người truyền cảm hứng, tạo động lực và cho gen Z công cụ để trang điểm như 1 cách thể hiện sự đa dạng cá tính, không còn khuôn mẫu hay những rào cản chuẩn mực truyền thống. \n\nVà đến năm nay, Maybelline đã tiến đến gần hơn với người dùng để song hành, cùng gen Z “hành động”. Như 1 người bạn thân thiết, Maybelline cùng với gen Z lan toả thần thái “tự tin lên mặt” cho mọi vẻ ngoài, mọi vấn đề, mọi tình huống. \n\nVẫn chọn âm nhạc làm công cụ chính truyền tải thông điệp nhưng khác với MBL 2.0, "Lên mặt với Khuyết Điểm 10" được XYZ Saigon biến tấu theo một phong cách khác táo bạo hơn khi kết hợp cùng "biệt đội tạo hit" DTAP và đạo diễn Ứng Duy Kiên để tạo nên 1 series 4 mini-MV cho 4 bài hát có beat nhạc ngắn, catchy cùng phần nhìn ấn tượng và đã mắt, lấy cảm hứng từ trend "biến hình" đã làm mưa làm gió suốt nửa đầu 2023 trên nền tảng TikTok.`,
+    execution: `#Thuvienmakeup: Tham vọng trở thành nguồn hướng dẫn và truyền cảm hứng makeup dành cho mọi người
+
+    Không chỉ muốn thay đổi suy nghĩ của gen Z về makeup, Maybelline còn muốn truyền cảm hứng để mọi người cùng bắt đầu hành trình "lên mặt" với sự ra đời của #Thuvienmakeup trên nền tảng TikTok.
+    
+    Bắt đầu với nhóm nội dung: Tips makeup cho Khuyết Điểm 10, các KOCs đã tạo ra nhiều video "mách" những mẹo makeup cùng Maybelline giúp tôn vinh các khuyết điểm 10 trên gương mặt. 
+    
+    Không chỉ vậy, #Thuvienmakeup còn có 2 nhóm nội dung lớn khác là Makeup inspiration để gợi ý những layout makeup và Makeup challenges để "thử thách" và khiến việc makeup trở nên thú vị hơn rất nhiều.`,
+  },
 ];

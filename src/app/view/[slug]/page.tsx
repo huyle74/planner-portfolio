@@ -11,12 +11,15 @@ const ViewPage = ({ params }: { params: Promise<{ slug: string }> }) => {
 
   useEffect(() => {
     try {
-      const slug = params.slug;
-      const result = data.find((dt: any) => {
-        return dt.id === Number(slug);
-      });
-      console.log(result);
-      setDataToDisplay(result);
+      const fetchSlug = async () => {
+        const fetch = await params;
+        const slug = fetch.slug;
+        const result = data.find((dt: any) => {
+          return dt.id === Number(slug);
+        });
+        setDataToDisplay(result);
+      };
+      fetchSlug();
     } catch (error) {
       console.log("Portfolio Not found >> ", error);
     }
