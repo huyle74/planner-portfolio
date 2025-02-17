@@ -4,29 +4,27 @@ import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 
 import View from "@/components/view";
-import { findPortfolio } from "../../ultility/fetchData";
+import { data } from "../../ultility/dataForGallery";
 
 const ViewPage = ({ params }: { params: Promise<{ slug: string }> }) => {
-  const [data, setData] = useState<any>([]);
+  const [dataToDisplay, setDataToDisplay] = useState<any>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (data.length === 0) {
-        try {
-          const slug = (await params).slug;
-          const result = await findPortfolio(slug);
-          setData(result);
-        } catch (error) {
-          console.error("Error fetching portfolio data:", error);
-        }
-      }
-    };
-    fetchData();
+    try {
+      const slug = params.slug;
+      const result = data.find((dt: any) => {
+        return dt.id === Number(slug);
+      });
+      console.log(result);
+      setDataToDisplay(result);
+    } catch (error) {
+      console.log("Portfolio Not found >> ", error);
+    }
   }, [params]);
 
   return (
     <Box>
-      <View data={data} />
+      <View data={dataToDisplay} />
     </Box>
   );
 };

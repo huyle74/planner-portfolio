@@ -5,23 +5,14 @@ import Header from "./header";
 import Body from "./body";
 import Footer from "./body-component/footer";
 import { flexBox_Config } from "@/app/ultility/style-component";
-import { mysqlDataForMainPage } from "@/app/ultility/fetchData";
+import { data } from "../app/ultility/dataForGallery";
 
 export default function Main() {
-  const [data, setData] = useState([]),
-    [mobile, setMobile] = useState<boolean>(false);
+  const [mobile, setMobile] = useState<boolean>(false);
 
   useEffect(() => {
     if (window.innerWidth < 768) {
       setMobile(true);
-    }
-
-    const fetchData = async () => {
-      const res = await mysqlDataForMainPage();
-      return setData(res);
-    };
-    if (data.length === 0) {
-      fetchData();
     }
   }, []);
   return (

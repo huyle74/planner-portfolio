@@ -56,7 +56,8 @@ const About: React.FC<ChildProps> = ({ mobile }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: "100%",  p: 3,
+                width: "100%",
+                p: 3,
               }
             : hoverBox_body
         }
@@ -90,15 +91,13 @@ const About: React.FC<ChildProps> = ({ mobile }) => {
             }}
             className="para-about"
           >
-            Marketing research is the function that links the consumer,
-            customer, and public to the marketer through information—information
-            used to identify and define opportunities and problems; generate,
-            refine, and evaluate actions; monitor performance; and improve
-            understanding of it as a process. It specifies the information
-            required to address these issues, designs the method for collecting
-            information, manages and implements the data collection process,
-            analyzes the results, and communicates the findings and their
-            implications.
+            My name is Huyen Vo, a passionate Marketing Planner with three years
+            of experience working with some of the biggest brands in Vietnam. I
+            specialize in crafting strategic marketing campaigns, driving brand
+            growth, and ensuring impactful audience engagement. With a keen eye
+            for market trends and consumer behavior, I strive to create
+            innovative solutions that elevate brand presence and business
+            success.
           </p>
         </Box>
         <p

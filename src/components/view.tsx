@@ -56,7 +56,7 @@ const View: React.FC<ChildProps> = ({ data }) => {
       ) : (
         <Box sx={{ width: "100%" }}>
           <ViewHeader data={data} onClick={handleClickCView} mobile={mobile} />
-          <ViewBody data={data} mobile={mobile} />
+          <ViewBody data={data} mobile={mobile} /> 
           <ViewFooter />
         </Box>
       )}
